@@ -35,11 +35,11 @@ export async function getTodos() {
     return checkError(response);
 }
 
-export async function completeTodo(id) {
+export async function completeTodo(id, bool) {
     // find the and update (set complete to true), the todo that matches the correct id
     const response = await client
         .from('todos')
-        .update({ complete: true })
+        .update({ complete: bool })
         .match({ id: id });
 
     return checkError(response);

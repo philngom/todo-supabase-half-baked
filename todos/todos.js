@@ -37,7 +37,11 @@ async function displayTodos() {
         // be sure to give each todo an event listener
         // on click, complete that todo
         todoEl.addEventListener('click', async() => {
-            await completeTodo(todo.id);
+            if (todo.complete) {
+                await completeTodo(todo.id, false);
+            } else {
+                await completeTodo(todo.id, true);
+            }
             displayTodos();
         });
 
